@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Start</title>
+<link rel="stylesheet" type="text/css" href="bootstrap.css">
+<script src="bootstrap.js" type="text/javascript"></script>
+<link rel="stylesheet" type="text/css" href="mystyle.css">
+<script type="text/javascript">
+
+function buymedicament(med,bd,f)
+{
+	console.log(med);
+	var xmlhttp = new XMLHttpRequest();
+	if(med!=undefined&&bd!=undefined&&f!=undefined)
+	{
+		var nr=document.getElementById("cate_medicamente").value;
+		xmlhttp.onreadystatechange = function() 
+		{
+	    	if (this.readyState == 4 && this.status == 200) 
+	            //document.getElementById("continut").innerHTML = this.responseText;
+	    		total();
+	    };
+	    //System.out.println("in index"+f);
+	    xmlhttp.open("GET","Shop?nr="+nr+"&med="+med+"&bd="+bd+"&f="+f, true);    
+	    xmlhttp.send();
+	}
+}
+
+function total()
+{
+	var nr=document.getElementById("cate_medicamente").value;
+	console.log(nr);
+	var xmlhttp = new XMLHttpRequest();
+	
+		xmlhttp.onreadystatechange = function() 
+		{
+			if (this.readyState == 4 && this.status == 200) 
+		        document.getElementById("total").innerHTML = this.responseText;
+		};
+	
+	
+	xmlhttp.open("GET","ShowList", true);
+	xmlhttp.send();
+}
+
+function showfarmacii()
+{
+	var xmlhttp = new XMLHttpRequest();
+	xmlhttp.onreadystatechange = function() 
+	{
+		if (this.readyState == 4 && this.status == 200) 
+		{
+			document.getElementById("farm").innerHTML = this.responseText;	
+		} 
+	};
+	xmlhttp.open("GET","Start", true);
+	xmlhttp.send();
+}
+
+function cauta() 
+{
+	var xmlhttp = new XMLHttpRequest();
+	var nume=document.getElementById("medicament").value;
+	var nr=document.getElementById("cate_medicamente").value;
+	
+	xmlhttp.onreadystatechange = function() 
+	{
+    	if (this.readyState == 4 && this.status == 200) 
+            document.getElementById("continut").innerHTML = this.responseText;
+    };
+    
+    xmlhttp.open("GET","Cauta_Med?nume="+nume+"&nr="+nr, true);
+    xmlhttp.send();
+ }
+ 
+ function emptybasket()
+ {
+	var xmlhttp = new XMLHttpRequest();
+	xmlhttp.onreadystatechange = function() 
+	{
+    	if (this.readyState == 4 && this.status == 200) 
+        	total();
+	};
+    
+    xmlhttp.open("GET","EmptyBasket", true);
+    xmlhttp.send();
+}
+ 
+</script>
+
+</head>
+<body onload="showfarmacii();total();" background="img\wallpaper2.jpg">
+<p class="titlu"><b>FarmaALWT</b></p> 
+	<p class="textButon">
+	    <input id="medicament" type="text" placeholder="Cauta medicament" class="form-control">
+	    <input id="cate_medicamente" type="text" placeholder="Cate?" class="form-control" >
+	    <button id="buton" onClick="cauta();" class="btn btn-dark">Cauta</button>  
+	    <button class="btn btn-dark" style="margin-left:100px" onClick="emptybasket();">Goleste Wishlist</button> 
+	</p>
+
+<div class="row"> 
+	<div id="continut" class="col-9"></div>
+	<div id="total" class="col-3"></div>
+</div>
+
+<div class="row">
+	<div id="farm"></div>
+</div>
+</body>
+</html>

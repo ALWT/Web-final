@@ -68,7 +68,8 @@ public class Cauta_Med extends HttpServlet
     				
     				List<Farmacie> fl = medd.getFarm(id);
 	            	if(fl != null)
-            		{
+            		{resp+="<div class=\"row\">";
+            		resp+="<div class=\"col\">";
 	                   	String farmacie = ""; 
             			for(Farmacie f : fl)
         				{
@@ -77,18 +78,20 @@ public class Cauta_Med extends HttpServlet
         					{
         						farmacie += f.getNume()+"</br>";
         						ok=1;
-                				aux="<button class=\"btn btn-dark\" style=\"margin-left: 300px; margin-top:50px;\" onClick=\"buymedicament('"+med.getNume()+"','"+s.getDbase()+"','"+f.getNume()+"');\">Adauga in WishList in " +f.getNume()+"</button>";
+                				aux="<button class=\"btn btn-dark\" style=\"margin-left: 300px; margin-top:50px;\" onClick=\"buymedicament('"+med.getNume()+"','"+s.getDbase()+"','"+f.getNume()+"');\">Adauga in WishList in " +f.getNume()+"</button><br>";
                 				resp+=aux; 
         					}  
         				}
- 
-            			
+                         resp+="</div>";
+            			resp+="<div class=\"col\">";
             			if (ok==0)
             				resp +="<div class=\"disponibilitate\" style=\"background-color: #ffffff; opacity: 0.5;\"><b>"+"Nu exista in stoc in "+s.getDbase()+"</b><br></div>";
             			else
             			{
             				resp +="<div class=\"disponibilitate\" style=\"background-color: #ffffff; opacity: 0.5;\"><b>"+"Disponibil in: "+s.getDbase()+"</b><br><div style=\"margin-left: 125px\">"+farmacie+"</br>"+"</div></div>";
-                   		} 
+                   		}
+                   		resp+="</div>";
+                   		resp+="</div>";
             		}
 	            } 
             } 

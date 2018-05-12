@@ -68,9 +68,14 @@ public class Cauta_Med extends HttpServlet
     				
     				List<Farmacie> fl = medd.getFarm(id);
 	            	if(fl != null)
+<<<<<<< HEAD
             		{
 	            		resp+="<div class=\"row\">";
 	            		resp+="<div class=\"col-4\">";
+=======
+            		{resp+="<div class=\"row\">";
+            		resp+="<div class=\"col\">";
+>>>>>>> 75e7eeede860b69bf4b648e9482dcb2fa54d1508
 	                   	String farmacie = ""; 
             			for(Farmacie f : fl)
         				{
@@ -79,6 +84,7 @@ public class Cauta_Med extends HttpServlet
         					{
         						farmacie += f.getNume()+"</br>";
         						ok=1;
+<<<<<<< HEAD
                 				aux="<button class=\"btn btn-dark\" style=\"margin-left: 500px; margin-top:50px;\" onClick=\"buymedicament('"+med.getNume()+"','"+s.getDbase()+"','"+f.getNume()+"');\">Adauga in WishList in " +f.getNume()+"</button><br>";
                 				resp+=aux; 
         					}  
@@ -86,11 +92,23 @@ public class Cauta_Med extends HttpServlet
                          
             			resp+="</div>";
             			resp+="<div class=\"col-4\">";
+=======
+                				aux="<button class=\"btn btn-dark\" style=\"margin-left: 300px; margin-top:50px;\" onClick=\"buymedicament('"+med.getNume()+"','"+s.getDbase()+"','"+f.getNume()+"');\">Adauga in WishList in " +f.getNume()+"</button><br>";
+                				resp+=aux; 
+        					}  
+        				}
+                         resp+="</div>";
+            			resp+="<div class=\"col\">";
+>>>>>>> 75e7eeede860b69bf4b648e9482dcb2fa54d1508
             			if (ok==0)
             				resp +="<div class=\"disponibilitate\" style=\"background-color: #ffffff; margin-top:50px; opacity: 0.5;\"><b>"+"Nu exista in stoc in "+s.getDbase()+"</b><br></div>";
             			else
             			{
+<<<<<<< HEAD
             				resp +="<div class=\"disponibilitate\" style=\"background-color: #ffffff; margin-top:50px; opacity: 0.5;\"><b>"+"Disponibil in: "+s.getDbase()+"</b><br><div style=\"margin-left: 125px\">"+farmacie+"</br>"+"</div></div>";
+=======
+            				resp +="<div class=\"disponibilitate\" style=\"background-color: #ffffff; opacity: 0.5;\"><b>"+"Disponibil in: "+s.getDbase()+"</b><br><div style=\"margin-left: 125px\">"+farmacie+"</br>"+"</div></div>";
+>>>>>>> 75e7eeede860b69bf4b648e9482dcb2fa54d1508
                    		}
                    		resp+="</div>";
                    		resp+="</div>";

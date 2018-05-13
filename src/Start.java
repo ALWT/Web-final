@@ -29,20 +29,24 @@ public class Start extends HttpServlet
 	{
 		String resp="";
 		resp+="<div class=\"row\">";
+		System.out.println(Connection.getServ_list().size());
 		for(Server s: Connection.getServ_list())
-        {
+        {System.out.println("now");
 			try 
 			{  
-				/*Registry r= LocateRegistry.getRegistry(s.getHost());
-				DBManageinter db =(DBManageinter)r.lookup("DBManage-"+s.getDbase());*/
-	            
-				DBManageinter db = new DBManageReal("localhost",s.getDbase(),"root","");
-				//DBManageinter db1 = new DBManageReal("localhost","farmacie-arad","root","");
+				Registry r= LocateRegistry.getRegistry(s.getHost());
+				System.out.println(r==null);
+				DBManageinter db =(DBManageinter)r.lookup("DBManage-"+s.getDbase());
+				System.out.println(db==null);
+				//DBManageinter db = new DBManageReal("localhost",s.getDbase(),"root","");
 	            List<Farmacie> fl = db.getFarmacii();
+	            
+	            System.out.println(fl==null);
 	            if(fl!=null)
 	            	for(Farmacie f : fl)
-	            			resp+="<div class=\"floating-box col\" style=\"display=inline; margin-top: 25px\">"+f.getNume()+"<br>"+f.getAdresa()+"<br>"+f.getNrtel()+"<br>"+"</div>";     	
-            } 
+	            	{	System.out.println(f.getNume());
+	            		resp+="<div class=\"floating-box col\" style=\"display=inline; margin-top: 25px\">"+f.getNume()+"<br>"+f.getAdresa()+"<br>"+f.getNrtel()+"<br>"+"</div>";     	
+            } }
 			catch (Exception e) 
 			{
                 System.err.println("ComputeEngine exception:");
@@ -51,6 +55,7 @@ public class Start extends HttpServlet
 		
         }
 		resp+="</div>";
+		System.out.println("start");
 		response.getWriter().println(resp);	
 	} 
 

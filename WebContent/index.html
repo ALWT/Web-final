@@ -8,10 +8,11 @@
 <link rel="stylesheet" type="text/css" href="mystyle.css">
 <script type="text/javascript">
 
-function buymedicament(med,bd,f)
+function buymedicament(med,bd,f,host)
 {
 	console.log(med);
 	var xmlhttp = new XMLHttpRequest();
+	console.log(med+bd+f+host);
 	if(med!=undefined&&bd!=undefined&&f!=undefined)
 	{
 		var nr=document.getElementById("cate_medicamente").value;
@@ -22,7 +23,7 @@ function buymedicament(med,bd,f)
 	    		total();
 	    };
 	    //System.out.println("in index"+f);
-	    xmlhttp.open("GET","Shop?nr="+nr+"&med="+med+"&bd="+bd+"&f="+f, true);    
+	    xmlhttp.open("GET","Shop?nr="+nr+"&med="+med+"&bd="+bd+"&f="+f+"&host="+host, true);    
 	    xmlhttp.send();
 	}
 }

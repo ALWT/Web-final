@@ -62,14 +62,14 @@ public class Cauta_Med extends HttpServlet
 	            	if(contor==1)
 	            	{
 	            		resp +="<div class=\"poza\" style=\"margin-top: 100px\"><img src=img\\"+med.getPoza()+" alt=medicament height=\"148\" width=\"248\"></div>";
-	            		resp +="<div class=\"descriere\" style=\"background-color: #ffffff; opacity: 0.5;\">"+med.getDescriere()+"</br></br>"+"<div style=\"font-size: 25px\"><b> Pret :"+med.getPret()+" lei</b>"+"</div></div>";
-
+	            		resp +="<div class=\"descriere\" style=\"background-color: #ffffff; opacity: 0.5;\">"+med.getDescriere()+"</br></br>"+"<div style=\"font-size: 25px\"></div></div>";
 	            	}
     				
     				List<Farmacie> fl = medd.getFarm(id);
 	            	if(fl != null)
-            		{resp+="<div class=\"row\">";
-            		resp+="<div class=\"col\">";
+            		{
+	            		resp+="<div class=\"row\">";
+	            		resp+="<div class=\"col-5\">";
 	                   	String farmacie = ""; 
             			for(Farmacie f : fl)
         				{
@@ -78,16 +78,18 @@ public class Cauta_Med extends HttpServlet
         					{
         						farmacie += f.getNume()+"</br>";
         						ok=1;
-                				aux="<button class=\"btn btn-dark\" style=\"margin-left: 300px; margin-top:50px;\" onClick=\"buymedicament('"+med.getNume()+"','"+s.getDbase()+"','"+f.getNume()+"','"+s.getHost()+"');\">Adauga in WishList in " +f.getNume()+"</button><br>";
+                				aux="<button class=\"btn btn-dark\" style=\"margin-left: 150px; margin-top:50px;\" onClick=\"buymedicament('"+med.getNume()+"','"+s.getDbase()+"','"+f.getNume()+"','"+s.getHost()+"');\">Adauga in WishList in " +f.getNume()+"</button><br>";
                 				resp+=aux; 
         					}  
-        				}
-                         resp+="</div>";
-            			resp+="<div class=\"col\">";
+        				}    
+                         
+            			resp+="</div>";
+            			resp+="<div class=\"col-4\">";
             			if (ok==0)
-            				resp +="<div class=\"disponibilitate\" style=\"background-color: #ffffff; margin-top:50px; opacity: 0.5;\"><b>"+"Nu exista in stoc in "+s.getDbase()+"</b><br></div>";
+            				resp +="<div class=\"disponibilitate\" style=\"background-color: #ffffff; margin-top: 50px; opacity: 0.5;\"><b>"+"Nu exista in stoc in "+s.getDbase()+"</b><br></div>";
             			else
-            			{resp +="<div class=\"disponibilitate\" style=\"background-color: #ffffff; opacity: 0.5;\"><b>"+"Disponibil in: "+s.getDbase()+"</b><br><div style=\"margin-left: 125px\">"+farmacie+"</br>"+"</div></div>";
+            			{
+            				resp +="<div class=\"disponibilitate\" style=\"background-color: #ffffff; margin-top: 50px; opacity: 0.5;\"><b>"+"Disponibil in: "+s.getDbase()+" <br/> Pret: "+med.getPret()+" RON</b><br><div style=\"margin-left: 125px\">"+farmacie+"</br>"+"</div></div>";
                    		}
                    		resp+="</div>";
                    		resp+="</div>";

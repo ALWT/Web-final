@@ -9,8 +9,8 @@ public class Connection
 		if(serv_list==null)
 		{
 			serv_list=new ArrayList<Server>();
-			serv_list.add(new Server("192.168.43.129","farmacie-timisoara"));
 			serv_list.add(new Server("192.168.43.129","farmacie-arad"));
+			serv_list.add(new Server("192.168.43.129","farmacie-timisoara"));
 		}
 		return serv_list;
 	}

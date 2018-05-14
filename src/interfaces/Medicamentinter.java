@@ -5,7 +5,8 @@ import java.util.List;
 
 import classes.*;
 
-public interface Medicamentinter extends Remote {
+public interface Medicamentinter extends Remote 
+{
     public List<Med_Farmacie> getMed_Farm(Medicament p) throws RemoteException;
     public List<Med_Farmacie> getMed_Farm(int pid)throws RemoteException;
     public List<Med_Farmacie> getMed_Farm(String p)throws RemoteException;

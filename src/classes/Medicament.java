@@ -1,8 +1,6 @@
 package classes;
 import java.rmi.*;
 
-
-
 public class Medicament implements java.io.Serializable
 {
 	private static final long serialVersionUID = 1L;

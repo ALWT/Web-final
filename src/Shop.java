@@ -41,8 +41,7 @@ public class Shop extends HttpServlet
 		String nr=request.getParameter("nr");
 		String bd =request.getParameter("bd");
 		String f =request.getParameter("f");
-		String host =request.getParameter("host");
-	    //System.out.println("in shop"+f);
+        String host =request.getParameter("host");
 			try 
 			{
 				int quant=Integer.parseInt(nr);

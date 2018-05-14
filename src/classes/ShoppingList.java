@@ -22,12 +22,4 @@ public class ShoppingList
 	{
 		buylist=new ArrayList<MedicamentShop>();
 	}
-	
-	public static  boolean contains(String  med)
-	{
-		for(MedicamentShop ms:buylist)
-			if(ms.m.getNume().equals(med)) 
-				return true;
-		return false;
-	}
 }
